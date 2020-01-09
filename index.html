@@ -470,6 +470,41 @@ $(function () {
                     
 
                     
+                        
+
+<link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<div class="music-player">
+    
+    <div class="title center-align">
+        <i class="fas fa-music"></i>&nbsp;&nbsp;听听音乐
+    </div>
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s12">
+            <div id="aplayer" class="music"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script>
+$(function () {
+    new APlayer({
+        container: document.getElementById('aplayer'),
+        fixed: 'true' === 'true',
+        autoplay: 'true' === 'true',
+        theme: '#f562a2',
+        loop: 'all',
+        order: 'list',
+        preload: 'auto',
+        volume: Number('0.7'),
+        listFolded: 'false' === 'true',
+        listMaxHeight: '',
+        audio: JSON.parse('[{"name":"梦一场","artist":"那英","url":"http://raohh.cn/mei.mp3","cover":"http://raohh.cn/heart.jpg"},{"name":"Take me hand","artist":"naying","url":"/medias/music/music2.mp3","cover":"/medias/music/cover2.png"}]')
+    });
+});
+</script>
+                    
 
                     
 
@@ -1126,7 +1161,7 @@ if (isset($_GET['pass']))
                     } else {
                         document.getElementById("year").innerHTML = startYear + " - " + todayYear;
                         document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
-                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒111";
                     }
                 }
                 setInterval(siteTime, 1000);
@@ -1240,7 +1275,9 @@ $(function () {
     
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+    <script>
+
+    </script>
 
 </body>
 
