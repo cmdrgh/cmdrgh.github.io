@@ -704,28 +704,30 @@ index
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/11/writeup/code-breaking-puzzles-writeup/">
+                <a href="/2019/10/25/writeup/roarctf-writeup/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Code-Breaking-Puzzles writeup">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="roarctf writeup">
                         
-                        <span class="card-title">Code-Breaking-Puzzles writeup</span>
+                        <span class="card-title">roarctf writeup</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            easy - function&lt;?php
-$action = $_GET['action'] ?? '';
-$arg = $_GET['arg'] ?? '';
-
-if(preg_match('/^[a-z0-9_]*$/isD', 
+                            ##Easy_calc(url解析)
+&lt;?php
+error_reporting(0);
+if(!isset($_GET['num'])){
+    show_source(__FILE__);
+}else{
+        $str
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-25
                             </span>
                         <span class="publish-author">
                             
@@ -742,8 +744,12 @@ if(preg_match('/^[a-z0-9_]*$/isD',
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">
-                        <span class="chip bg-color">代码审计</span>
+                    <a href="/tags/sql%E6%B3%A8%E5%85%A5/">
+                        <span class="chip bg-color">sql注入</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E/">
+                        <span class="chip bg-color">框架漏洞</span>
                     </a>
                     
                 </div>
