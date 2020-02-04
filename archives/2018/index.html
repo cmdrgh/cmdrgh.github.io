@@ -393,23 +393,25 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2018/09/07/wang-luo/ssh-dai-li-li-zi/">
+                        <a href="/2018/09/07/wang-luo/ssh-dai-li-duo-chong-mo-shi/">
                             <div class="card-image">
                                 
                                 
-                                <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="网络/ssh代理例子">
+                                <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="网络/ssh代理多种模式">
                                 
-                                <span class="card-title">网络/ssh代理例子</span>
+                                <span class="card-title">网络/ssh代理多种模式</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    例子1将vps流量代理到本地
-情景：有一台国外服务器，当梯子用
-ssserver将
-ssserver -p 2333 -k rois2019 -m aes-256-cfb本地连接 通过命令行连接或者ss客户端
-sslocal -s raoh
+                                    SSH命令SSH命令参数 (大小写注意区分)
+正向代理 ssh -fCNL
+反向代理 ssh -fCNR
+-f 后台执行ssh指令
+-C 允许压缩数据
+-N 不执行远程指令
+-R 将远程主机(服务器)的某个端口转发到本地端指定机器的指定端口
                                 
                             </div>
                             <div class="publish-info">
@@ -456,25 +458,23 @@ sslocal -s raoh
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2018/09/07/wang-luo/ssh-dai-li-duo-chong-mo-shi/">
+                        <a href="/2018/09/07/wang-luo/ssh-dai-li-li-zi/">
                             <div class="card-image">
                                 
                                 
-                                <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="网络/ssh代理多种模式">
+                                <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="网络/ssh代理例子">
                                 
-                                <span class="card-title">网络/ssh代理多种模式</span>
+                                <span class="card-title">网络/ssh代理例子</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    SSH命令SSH命令参数 (大小写注意区分)
-正向代理 ssh -fCNL
-反向代理 ssh -fCNR
--f 后台执行ssh指令
--C 允许压缩数据
--N 不执行远程指令
--R 将远程主机(服务器)的某个端口转发到本地端指定机器的指定端口
+                                    例子1将vps流量代理到本地
+情景：有一台国外服务器，当梯子用
+ssserver将
+ssserver -p 2333 -k rois2019 -m aes-256-cfb本地连接 通过命令行连接或者ss客户端
+sslocal -s raoh
                                 
                             </div>
                             <div class="publish-info">
