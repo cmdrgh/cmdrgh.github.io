@@ -496,12 +496,12 @@ taskkill /F  /PID 20144(PID) #终止进程</code></pre><h2 id="端口本地转�
 <p>其实在外地的同事只需要访问本机的127.0.0.1:2121就相当于访问192.168.1.101:21了</p>
 <h2 id="端口动态转发-D"><a href="#端口动态转发-D" class="headerlink" title="端口动态转发 (D)"></a>端口动态转发 (D)</h2><p>当访问internet时，本机的1080端口做为代理服务器(socks5代理)，访问请求被转发到sshserver上，由sshserver替之访问internet</p>
 <blockquote>
-<p>ssh -fCND 1083 <a href="mailto:root@raohh.cn" target="_blank" rel="noopener">root@raohh.cn</a></p>
+<p>ssh -fCND 1083 <a href="mailto:root@x.x.x.x" target="_blank" rel="noopener">root@x.x.x.x</a></p>
 </blockquote>
 <blockquote>
-<p>ssh -fN -D 0.0.0.0:1083 <a href="mailto:root@raohh.cn" target="_blank" rel="noopener">root@raohh.cn</a></p>
+<p>ssh -fN -D 0.0.0.0:1083 <a href="mailto:root@x.x.x.x" target="_blank" rel="noopener">root@x.x.x.x</a></p>
 </blockquote>
-<p>执行之后 使用本地1083的socks5代理 流量显示为服务器raohh.cn的ip</p>
+<p>执行之后 使用本地1083的socks5代理 流量显示为服务器x.x.x.x的ip</p>
 <h2 id="通过代理连接服务器-O"><a href="#通过代理连接服务器-O" class="headerlink" title="通过代理连接服务器 (O)"></a>通过代理连接服务器 (O)</h2><p><strong>背景</strong></p>
 <ul>
 <li>客户机：<code>client.net</code></li>
@@ -529,8 +529,7 @@ $ ssh -o &quot;ProxyCommand nc -X 5 -x proxy.net:1080 %h %p&quot; user@server.ne
 <pre class=" language-plain"><code class="language-plain">Host *
     ProxyCommand nc -X 5 -x proxy.net:1080 %h %p</code></pre>
 <p>使用配置文件之后，就不需要在命令行中进行代理配置了。</p>
-<p>####python request proxy</p>
-<pre class=" language-python"><code class="language-python">proxy <span class="token operator">=</span> <span class="token string">'node1.buuoj.cn:28421'</span>
+<h4 id="python-request-proxy"><a href="#python-request-proxy" class="headerlink" title="python request proxy"></a>python request proxy</h4><pre class=" language-python"><code class="language-python">proxy <span class="token operator">=</span> <span class="token string">'node1.buuoj.cn:28421'</span>
 proxies <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token string">'http'</span><span class="token punctuation">:</span> <span class="token string">'socks5h://'</span> <span class="token operator">+</span> proxy<span class="token punctuation">,</span>
     <span class="token string">'https'</span><span class="token punctuation">:</span> <span class="token string">'socks5h://'</span> <span class="token operator">+</span> proxy
@@ -786,8 +785,8 @@ r<span class="token operator">=</span> requests<span class="token punctuation">.
                             例子1将vps流量代理到本地
 情景：有一台国外服务器，当梯子用
 ssserver将
-ssserver -p 2333 -k rois2019 -m aes-256-cfb本地连接 通过命令行连接或者ss客户端
-sslocal -s raoh
+ssserver -p 2333 -k password -m aes-256-cfb本地连接 通过命令行连接或者ss客户端
+sslocal -s x.x.
                         
                     </div>
                     <div class="publish-info">
