@@ -5,13 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="bytectf writeup, hhblog">
-    <meta name="description" content="##boring code(绕正则)
-在index.php中
+    <meta name="description" content="boring code(绕正则)在index.php中
 // index.php
 &amp;lt;!-- flag in this file and code in /code --&gt;
 // /code
 &amp;lt;?php
-function i">
+function is_v">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -384,14 +383,14 @@ function i">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    9 分
                 </div>
                 
 				
@@ -407,8 +406,7 @@ function i">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>##boring code(绕正则)</p>
-<p>在index.php中</p>
+                <h2 id="boring-code-绕正则"><a href="#boring-code-绕正则" class="headerlink" title="boring code(绕正则)"></a>boring code(绕正则)</h2><p>在index.php中</p>
 <pre class=" language-html"><code class="language-html">// index.php
 <span class="token comment" spellcheck="true">&lt;!-- flag in this file and code in /code --></span></code></pre>
 <pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">// /code</span>
@@ -446,7 +444,6 @@ function i">
     <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token delimiter">?></span></code></pre>
-<p>###Writeup</p>
 <p>flag在index.php中</p>
 <p>code里先过滤了data函数</p>
 <p>要满足url参数的后缀的baidu.com结尾</p>
@@ -487,7 +484,18 @@ for i in range(400):
     print(i)
     r=s.post(url,data=payload)
     if &quot;flag&quot; in r.text:
-        print (r.text)</code></pre><p>第一层用百度网盘</p>
+        print (r.text)</code></pre><p>第一层用百度贴吧，百度网盘</p>
+<p>或者<code>compress.zlib://data:@baidu.com/;base64,Pmxz&quot;);</code></p>
+<h3 id="Data-URI-scheme-的语法"><a href="#Data-URI-scheme-的语法" class="headerlink" title="Data URI scheme 的语法"></a>Data URI scheme 的语法</h3><blockquote>
+<p> <strong>data:①[&lt;mime type&gt;]②[;charset=&lt;charset&gt;]③[;&lt;encoding&gt;]④,&lt;encoded data&gt;⑤</strong></p>
+</blockquote>
+<p><strong>第①部分</strong><code>data:</code><strong>：</strong> 协议头，它标识这个内容为一个 data URI 资源。</p>
+<p><strong>第②部分</strong><code>[&lt;mime type&gt;]</code><strong>（可选项）：</strong>浏览器通常使用MIME类型（而不是文件扩展名）来确定如何处理文档；因此服务器设置正确以将正确的MIME类型附加到响应对象的头部是非常重要的。MIME类型对大小写不敏感，但是传统写法都是小写。</p>
+<p>例如：<strong>text/plain，image/jpeg</strong> 等</p>
+<p><strong>第③部分 *<em><code>[;charset=&lt;charset&gt;]</code> *</em>（可选项）:</strong>源文本的字符集编码方式，默认编码是 charset=US-ASCII, 即数据部分的每个字符都会自动编码为 %xx</p>
+<p><strong>第④部分</strong><code>[;&lt;encoding&gt;]</code> *<em>： *</em>数据编码方式（默认US-ASCII，BASE64两种）</p>
+<p><strong>第⑤部分</strong><code>,&lt;encoded data&gt;</code> <strong>：</strong> 编码后的数据</p>
+<p><code>baidu.com/</code>代替的是data协议中的mine类型</p>
 <h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>vim编辑后保存会自动在结尾加上换行符</p>
 <p>需要设置成二进制文件格式</p>
 <pre><code>:set binary
