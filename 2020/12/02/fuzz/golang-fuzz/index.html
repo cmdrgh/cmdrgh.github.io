@@ -374,7 +374,7 @@ RUN apt-get ">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.6k
                 </div>
                 
 
@@ -425,19 +425,22 @@ CMD [ "/heart_beat.sh" ]
 #!/bin/bash
 sleep infinity;</code></pre>
 <p><code>/etc/profile</code> 配置 golang 环境变量</p>
-<pre><code>export GOROOT=/usr/local/go
-export GOBIN=$GOROOT/bin
-#工作目录
-export GOPATH=/go
-export GOPROXY=https://goproxy.io
-export PATH=$PATH:$GOPATH:$GOBIN:$GOROOT</code></pre><p>升级 go 版本</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">export</span> GOROOT<span class="token operator">=</span>/usr/local/go
+<span class="token function">export</span> GOBIN<span class="token operator">=</span><span class="token variable">$GOROOT</span>/bin
+<span class="token comment" spellcheck="true">#工作目录</span>
+<span class="token function">export</span> GOPATH<span class="token operator">=</span>/go
+<span class="token function">export</span> GOPROXY<span class="token operator">=</span>https://goproxy.io
+<span class="token function">export</span> PATH<span class="token operator">=</span><span class="token variable">$PATH</span><span class="token keyword">:</span><span class="token variable">$GOPATH</span><span class="token keyword">:</span><span class="token variable">$GOBIN</span><span class="token keyword">:</span><span class="token variable">$GOROOT</span></code></pre>
+<p>升级 go 版本</p>
 <p>从官方地址：<a href="https://golang.org/dl/" target="_blank" rel="noopener">https://golang.org/dl/</a> 下载</p>
-<pre><code>wget https://dl.google.com/go/go1.xx.tar.gz
-tar -xzf go1.xx.tar.gz -C /usr/local
-ln -s /usr/local/go/bin/* /usr/bin/</code></pre><h2 id="安装-go-fuzz"><a href="#安装-go-fuzz" class="headerlink" title="安装 go-fuzz"></a>安装 go-fuzz</h2><p>下载 <code>https://github.com/dvyukov/go-fuzz</code> 放在 <code>$GOPATH/src/github.com/dvyukov/go-fuzz</code></p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">wget</span> https://dl.google.com/go/go1.xx.tar.gz
+<span class="token function">tar</span> -xzf go1.xx.tar.gz -C /usr/local
+<span class="token function">ln</span> -s /usr/local/go/bin/* /usr/bin/</code></pre>
+<h2 id="安装-go-fuzz"><a href="#安装-go-fuzz" class="headerlink" title="安装 go-fuzz"></a>安装 go-fuzz</h2><p>下载 <code>https://github.com/dvyukov/go-fuzz</code> 放在 <code>$GOPATH/src/github.com/dvyukov/go-fuzz</code></p>
 <p>go-fuzz提供的语料库 <code>https://github.com/dvyukov/go-fuzz-corpus</code> 放在 <code>$GOPATH/src/github.com/dvyukov/go-fuzz-corpus</code></p>
-<pre><code>go install $GOPATH/src/github.com/dvyukov/go-fuzz/go-fuzz
-go install $GOPATH/src/github.com/dvyukov/go-fuzz/go-fuzz-build</code></pre><p>install完成后生成的可执行文件在$GOBIN 路径下</p>
+<pre class=" language-bash"><code class="language-bash">go <span class="token function">install</span> <span class="token variable">$GOPATH</span>/src/github.com/dvyukov/go-fuzz/go-fuzz
+go <span class="token function">install</span> <span class="token variable">$GOPATH</span>/src/github.com/dvyukov/go-fuzz/go-fuzz-build</code></pre>
+<p>install完成后生成的可执行文件在$GOBIN 路径下</p>
 <h2 id="Fuzz-实战"><a href="#Fuzz-实战" class="headerlink" title="Fuzz 实战"></a>Fuzz 实战</h2><p>要测试的是 iprange （<a href="https://github.com/malfunkt/iprange）" target="_blank" rel="noopener">https://github.com/malfunkt/iprange）</a></p>
 <p>iprange是一个库，可用于从nmap格式的字符串中解析IPv4地址。它接收一个字符串，并返回一个“Min-Max”格式的列表。iprange支持以下格式：</p>
 <pre><code>10.0.0.1
@@ -463,7 +466,7 @@ go install $GOPATH/src/github.com/dvyukov/go-fuzz/go-fuzz-build</code></pre><p>i
     log<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"%s"</span><span class="token punctuation">,</span> rng<span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre>
 <p>安装的库文件在 <code>$GOPATH\src\github.com\malfunkt\iprange</code> 目录下，</p>
-<p>可以执行hard reset，有漏洞版本的 commit id 如下</p>
+<p>有漏洞版本的 commit id 如下</p>
 <pre><code>git reset --hard 3a31f5ed42d2d8a1fc46f1be91fd693bdef2dd52</code></pre><h3 id="编写-Fuzz-函数"><a href="#编写-Fuzz-函数" class="headerlink" title="编写 Fuzz 函数"></a>编写 Fuzz 函数</h3><p>在 <code>$GOPATH/src/github.com/malfunkt/iprange</code> 下创建 iprange_fuzz.go 文件，内容如下：</p>
 <pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> iprange
 
@@ -479,11 +482,12 @@ go install $GOPATH/src/github.com/dvyukov/go-fuzz/go-fuzz-build</code></pre><p>i
 <li>使用 go-fuzz-build 来生成 fuzzing zip 文件</li>
 </ul>
 <p>运行如下命令，在当前文件夹生成 iprange-fuzz.zip 文件</p>
-<pre><code>$GOBIN/go-fuzz-build $GOPATH/src/github.com/malfunkt/iprange/</code></pre><ul>
+<pre class=" language-bash"><code class="language-bash"><span class="token variable">$GOBIN</span>/go-fuzz-build <span class="token variable">$GOPATH</span>/src/github.com/malfunkt/iprange/</code></pre>
+<ul>
 <li>准备语料</li>
 </ul>
 <p>为了进行有意义的 fuzz，我们需要尽可能提供格式正确的样本。</p>
-<p>在文件 <code>./corpus</code> 创建文件，写入以下内容，文件名随意 </p>
+<p>在文件夹 <code>./corpus</code> 下创建语料文件，写入以下内容，文件名随意 </p>
 <p>提供 iprange 输入的格式数据可以更快的找到 crash 数据（ fuzz 会通过你提供的语料以及 fuzz 函数返回的状态，变异输入的数据）</p>
 <pre><code>10.0.0.1
 10.0.0.0/24
@@ -492,7 +496,12 @@ go install $GOPATH/src/github.com/dvyukov/go-fuzz/go-fuzz-build</code></pre><p>i
 10.0.0.1, 10.0.0.5-10, 192.168.1.*, 192.168.10.0/24</code></pre><ul>
 <li>运行 fuzzer</li>
 </ul>
-<pre><code>$GOBIN/go-fuzz -bin=./iprange-fuzz.zip -workdir=.</code></pre><p>运行 fuzzer 后，看到 crashers 的数量出现1。此时，可以在 crashers 目录下查看文件，发现导致崩溃的原因</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token variable">$GOBIN</span>/go-fuzz -bin<span class="token operator">=</span>./iprange-fuzz.zip -workdir<span class="token operator">=</span>.</code></pre>
+<p>运行 fuzzer 后，看到 crashers 的数量出现1</p>
+<pre class=" language-bash"><code class="language-bash">workers: 1, corpus: 37 <span class="token punctuation">(</span>0s ago<span class="token punctuation">)</span>, crashers: 1, restarts: 1/0, execs: 0 <span class="token punctuation">(</span>0/sec<span class="token punctuation">)</span>, cover: 0, uptime: 3s
+workers: 1, corpus: 38 <span class="token punctuation">(</span>2s ago<span class="token punctuation">)</span>, crashers: 1, restarts: 1/0, execs: 0 <span class="token punctuation">(</span>0/sec<span class="token punctuation">)</span>, cover: 384, uptime: 6s
+workers: 1, corpus: 38 <span class="token punctuation">(</span>5s ago<span class="token punctuation">)</span>, crashers: 1, restarts: 1/981, execs: 7849 <span class="token punctuation">(</span>872/sec<span class="token punctuation">)</span>, cover: 393, uptime: 9s</code></pre>
+<p>在 crashers 目录下查看文件，发现导致崩溃的原因</p>
 <pre class=" language-go"><code class="language-go"><span class="token builtin">panic</span><span class="token punctuation">:</span> runtime <span class="token builtin">error</span><span class="token punctuation">:</span> index out of <span class="token keyword">range</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> with length <span class="token number">0</span>
 
 goroutine <span class="token number">1</span> <span class="token punctuation">[</span>running<span class="token punctuation">]</span><span class="token punctuation">:</span>
