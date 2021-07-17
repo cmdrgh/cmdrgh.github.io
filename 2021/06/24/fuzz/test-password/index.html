@@ -4,14 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="网络/ssh代理多种模式, hhblog">
-    <meta name="description" content="SSH命令SSH命令参数 (大小写注意区分)
-正向代理 ssh -fCNL
-反向代理 ssh -fCNR
--f 后台执行ssh指令
--C 允许压缩数据
--N 不执行远程指令
--R 将远程主机(服务器)的某个端口转发到本地端指定机器的指定端口">
+    <meta name="keywords" content="LOVE❤️, hhblog">
+    <meta name="description" content="
+  338d70b6b7e073d9e926b2b355ee98fd4f0660fe63862b31fa0f3086f825f2abcb9e4609c04f108aefc801f344f7f4b88718a17103cc4e41eb2e7">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>网络/ssh代理多种模式 | hhblog</title>
+    <title>LOVE❤️ | hhblog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -224,13 +219,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        网络/ssh代理多种模式
+                        LOVE❤️
                     </div>
                 </div>
             </div>
@@ -340,25 +335,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/ssh/">
-                                <span class="chip bg-color">ssh</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E7%BD%91%E7%BB%9C/" class="post-category">
-                                网络
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -367,7 +349,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-09-07
+                    2021-06-24
                 </div>
                 
 
@@ -376,14 +358,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    9
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    1 分
                 </div>
                 
 				
@@ -399,144 +381,18 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="SSH命令"><a href="#SSH命令" class="headerlink" title="SSH命令"></a>SSH命令</h1><p>SSH命令参数 (大小写注意区分)</p>
-<pre><code>正向代理 ssh -fCNL
-反向代理 ssh -fCNR
--f 后台执行ssh指令
--C 允许压缩数据
--N 不执行远程指令
--R 将远程主机(服务器)的某个端口转发到本地端指定机器的指定端口
--L 将本地机(客户机)的某个端口转发到远端指定机器的指定端口
--p 指定远程主机的端口</code></pre><pre><code>linux
-netstat -an | grep 8899   # 查看端口转发情况
-sudo lsof -i:8899       (kill PID)
-sudo ufw allow 8899       # 防火墙打开端口，记得打开阿里云官网的防火墙
-sudo systemctl restart sshd
-
-windows
-netstat -ano | findstr &quot;2121&quot;(port) 
-tasklist | findstr &quot;20144&quot;(PID)
-taskkill /F  /PID 20144(PID) #终止进程</code></pre><h2 id="端口本地转发-正向代理-L"><a href="#端口本地转发-正向代理-L" class="headerlink" title="端口本地转发 正向代理 (L)"></a>端口本地转发 正向代理 (L)</h2><p><strong>将中间主机可访问的主机的指定端口 镜像到本地指定端口</strong> </p>
-<blockquote>
-<p>ssh -L 本地IP:本地端口:中间主机可访问的IP:中间主机可访问的IP的端口 root@中间主机</p>
-</blockquote>
-<p>案例：公司为了安全配置了两台机器，一台可供外网访问[公司主机A]。另外一台不能外网访问[公司主机B]，但可与[公司主机A]互连。现在我在遥远外地，我要取公司[主机B]的文件，但此时无人在公司。 但我有一台连接外网的[个人主机P]</p>
-<table>
-<thead>
-<tr>
-<th align="center">主机名</th>
-<th align="center">公网IP</th>
-<th align="center">内网ip</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">[公司主机A]</td>
-<td align="center">218.200.20.1</td>
-<td align="center">192.168.1.100</td>
-</tr>
-<tr>
-<td align="center">[公司主机B]</td>
-<td align="center">无</td>
-<td align="center">192.168.1.101</td>
-</tr>
-<tr>
-<td align="center">[个人主机P]</td>
-<td align="center">218.200.20.2</td>
-<td align="center">无</td>
-</tr>
-</tbody></table>
-<p>我要访问内网101的FTP的话，就在[个人主机P]上执行： </p>
-<blockquote>
-<p>ssh -L [个人主机P]:[个人主机P未被占用的任意端口]:[公司主机B]:[公司主机B对应服务的端口] [公司主机A用户]@[公司主机A外网IP]</p>
-</blockquote>
-<blockquote>
-<p>ssh -L 127.0.0.1:2121:192.168.1.101:21 <a href="mailto:root@218.200.20.1" target="_blank" rel="noopener">root@218.200.20.1</a><br>然后再在[个人主机P]访问ftp即可访问地址为：<a href="ftp://127.0.0.1:2121/" target="_blank" rel="noopener">ftp://127.0.0.1:2121</a></p>
-</blockquote>
-<h2 id="端口远程转发-反向代理-R"><a href="#端口远程转发-反向代理-R" class="headerlink" title="端口远程转发 反向代理 (R)"></a>端口远程转发 反向代理 (R)</h2><p><strong>将本地可访问的主机的指定端口 镜像到远程指定端口</strong><br>ssh -R 远程IP:远程端口:本地可访问IP:本地可访问IP的端口 root@远程主机</p>
-<p>案例：公司为了安全配置了两台机器，一台可供外网访问[公司主机A]。另外一台不能外网访问[公司主机B]，但可与[公司主机A]互连。现在我在公司，外网有同事要取公司[主机B]的文件，但公司不能给他[公司主机A]的账号信息，但他知道[公司主机B]的个人FTP用户信息，但不能给我知道。</p>
-<table>
-<thead>
-<tr>
-<th align="center">主机名</th>
-<th align="center">公网ip</th>
-<th align="center">内网ip</th>
-<th align="center">用户</th>
-<th align="center">密码</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">[公司主机A]</td>
-<td align="center">218.200.20.1</td>
-<td align="center">192.168.1.100</td>
-<td align="center">root</td>
-<td align="center">已知</td>
-</tr>
-<tr>
-<td align="center">[公司主机B]</td>
-<td align="center">无</td>
-<td align="center">192.168.1.101</td>
-<td align="center">root</td>
-<td align="center">未知</td>
-</tr>
-<tr>
-<td align="center">[个人主机P]</td>
-<td align="center">218.200.20.2</td>
-<td align="center">无</td>
-<td align="center">root</td>
-<td align="center">已知</td>
-</tr>
-</tbody></table>
-<p>在公司的[公司主机A]上执行 </p>
-<blockquote>
-<p>ssh -R [要接收该映射的主机的可访问IP]:[要接收该映射的主机的未占用端口]:[公司主机A可访问的主机]:[公司主机A可访问的主机的端口] [要接收该映射的主机的用户]@[要接收该映射的主机的IP]</p>
-</blockquote>
-<blockquote>
-<p>ssh -R 127.0.0.1:2121:192.168.1.101:21 <a href="mailto:root@218.200.20.2" target="_blank" rel="noopener">root@218.200.20.2</a></p>
-</blockquote>
-<p>其实在外地的同事只需要访问本机的127.0.0.1:2121就相当于访问192.168.1.101:21了</p>
-<h2 id="端口动态转发-D"><a href="#端口动态转发-D" class="headerlink" title="端口动态转发 (D)"></a>端口动态转发 (D)</h2><p>当访问internet时，本机的1080端口做为代理服务器(socks5代理)，访问请求被转发到sshserver上，由sshserver替之访问internet</p>
-<blockquote>
-<p>ssh -fCND 1083 <a href="mailto:root@x.x.x.x" target="_blank" rel="noopener">root@x.x.x.x</a></p>
-</blockquote>
-<blockquote>
-<p>ssh -fN -D 0.0.0.0:1083 <a href="mailto:root@x.x.x.x" target="_blank" rel="noopener">root@x.x.x.x</a></p>
-</blockquote>
-<p>执行之后 使用本地1083的socks5代理 流量显示为服务器x.x.x.x的ip</p>
-<h2 id="通过代理连接服务器-O"><a href="#通过代理连接服务器-O" class="headerlink" title="通过代理连接服务器 (O)"></a>通过代理连接服务器 (O)</h2><p><strong>背景</strong></p>
-<ul>
-<li>客户机：<code>client.net</code></li>
-<li>代理服务器：<code>proxy.net</code>，安装代理服务器软件，通过 <code>1080</code> 端口，提供 Socket5 代理服务</li>
-<li>目标服务器：<code>server.net</code>，在默认 <code>22</code> 端口，提供 SSH 服务 </li>
-</ul>
-<p><code>-X</code> <strong>指定代理协议</strong></p>
-<ul>
-<li><code>4</code> SOCKS v.4</li>
-<li><code>5</code> SOCKS v.5<strong>（默认）</strong></li>
-<li><code>connect</code> HTTPS proxy</li>
-</ul>
-<p><code>-x</code> <strong>代理地址[:端口]</strong></p>
-<p>如果没有指定端口，采用协议常用端口，如：</p>
-<ul>
-<li>SOCKETS 使用 1080</li>
-<li>HTTPS 使用 3128</li>
-</ul>
-<p>####1命令行</p>
-<pre><code>$ ssh -o ProxyCommand=&quot;nc -X 5 -x proxy.net:1080 %h %p&quot; user@server.net
-$ ssh -o &quot;ProxyCommand nc -X 5 -x proxy.net:1080 %h %p&quot; user@server.net</code></pre><h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>node2.buuoj.cn.wetolink.com:28655为靶机内网对外 socks5 代理地址，请在浏览器设置代理后访问 <a href="http://web/" target="_blank" rel="noopener">http://web/</a> 打开靶机。靶机无法访问外网，所以在内网提供了一台 LAMP 服务器，主机名为 <a href="http://baidu.com/" target="_blank" rel="noopener">baidu.com</a>，ssh 用户名：root，ssh密码：123456</p>
-<pre><code>ssh -o &quot;ProxyCommand nc -X 5 -x node2.buuoj.cn.wetolink.com:28655 %h %p&quot; root@baidu.com</code></pre><h4 id="2使用SSH配置文件"><a href="#2使用SSH配置文件" class="headerlink" title="2使用SSH配置文件"></a>2使用SSH配置文件</h4><p><code>SSH</code> 配置文件位置：</p>
-<pre class=" language-plain"><code class="language-plain">~/.ssh/config</code></pre>
-<p>增加如下两行内容：</p>
-<pre class=" language-plain"><code class="language-plain">Host *
-    ProxyCommand nc -X 5 -x proxy.net:1080 %h %p</code></pre>
-<p>使用配置文件之后，就不需要在命令行中进行代理配置了。</p>
-<h4 id="python-request-proxy"><a href="#python-request-proxy" class="headerlink" title="python request proxy"></a>python request proxy</h4><pre class=" language-python"><code class="language-python">proxy <span class="token operator">=</span> <span class="token string">'node1.buuoj.cn:28421'</span>
-proxies <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token string">'http'</span><span class="token punctuation">:</span> <span class="token string">'socks5h://'</span> <span class="token operator">+</span> proxy<span class="token punctuation">,</span>
-    <span class="token string">'https'</span><span class="token punctuation">:</span> <span class="token string">'socks5h://'</span> <span class="token operator">+</span> proxy
-<span class="token punctuation">}</span>
-r<span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span>data<span class="token operator">=</span>payload<span class="token punctuation">,</span> proxies<span class="token operator">=</span>proxies<span class="token punctuation">)</span></code></pre>
-<p>In a proxy string, socks5h:// and socks4a:// mean that the hostname is<br>resolved by the SOCKS server. socks5:// and socks4:// mean that the<br>hostname is resolved locally. socks4a:// means to use SOCKS4a, which is<br>an extension of SOCKS4</p>
-
+                <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="密码错误！" data-whm="校验错误！">
+  <script id="hbeData" type="hbeData" data-hmacdigest="684c05e4ac6e39c1d6ae0a9a9d3d8c3e96d719848dcf89e4479ee51057c7aa60">338d70b6b7e073d9e926b2b355ee98fd4f0660fe63862b31fa0f3086f825f2abcb9e4609c04f108aefc801f344f7f4b88718a17103cc4e41eb2e7a83ddf10ad71838bfc4ee7feed5cb936f2f95ff138d986b810062c4aad84204a684b39e14ae78a748f6cd84979960a84a886a84d3892a9f00f2b1395b28fef456005f94485ac668cd5ec843a05071a6ba4af4b6e5f0966752d50aa67ad61f35eafae80a8180df2e6f1d719c7f7ba50f8c4cd49d233d68561e0a8e6f335984e3b46cd99bd62a</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Welcome to my blog, enter password to read.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
             </div>
             <hr/>
 
@@ -561,7 +417,7 @@ r<span class="token operator">=</span> requests<span class="token punctuation">.
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://hhrao.xyz/2018/09/07/wang-luo/ssh-dai-li-duo-chong-mo-shi/">https://hhrao.xyz/2018/09/07/wang-luo/ssh-dai-li-duo-chong-mo-shi/</a>
+                    <a href="https://hhrao.xyz/2021/06/24/fuzz/test-password/">https://hhrao.xyz/2021/06/24/fuzz/test-password/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -598,11 +454,7 @@ r<span class="token operator">=</span> requests<span class="token punctuation">.
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/ssh/">
-                                    <span class="chip bg-color">ssh</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -766,73 +618,40 @@ r<span class="token operator">=</span> requests<span class="token punctuation">.
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/08/20/writeup/suctf-writeup/">
+                <a href="/2021/06/24/fuzz/test-password/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="suctf writeup">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="LOVE❤️">
                         
-                        <span class="card-title">suctf writeup</span>
+                        <span class="card-title">LOVE❤️</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            checkin(文件上传 user.ini)上传一个文件
-&lt;?php
-// error_reporting(0);
-$userdir = "uploads/" . md5($_SERVER["REMOTE_ADDR"]);
-if (!
+                            
+  338d70b6b7e073d9e926b2b355ee98fd4f0660fe63862b31fa0f3086f825f2abcb9e4609c04f108aefc801f344f7f4b88718a17103cc4e41eb2e7
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-08-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-24
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/writeup/" class="post-category">
-                                    writeup
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            hh
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">
-                        <span class="chip bg-color">代码审计</span>
-                    </a>
-                    
-                    <a href="/tags/phar%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
-                        <span class="chip bg-color">phar反序列化</span>
-                    </a>
-                    
-                    <a href="/tags/sql%E6%B3%A8%E5%85%A5/">
-                        <span class="chip bg-color">sql注入</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%BC%AA%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6/">
-                        <span class="chip bg-color">伪静态文件</span>
-                    </a>
-                    
-                    <a href="/tags/bypassDF/">
-                        <span class="chip bg-color">bypassDF</span>
-                    </a>
-                    
-                    <a href="/tags/python-urllib/">
-                        <span class="chip bg-color">python_urllib</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -843,35 +662,35 @@ if (!
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/09/07/wang-luo/ssh-dai-li-li-zi/">
+                <a href="/2020/12/02/fuzz/golang-fuzz/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="网络/ssh代理例子">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="GO FUZZING入手">
                         
-                        <span class="card-title">网络/ssh代理例子</span>
+                        <span class="card-title">GO FUZZING入手</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            例子1将vps流量代理到本地
-情景：有一台国外服务器，当梯子用
-ssserver将
-ssserver -p 2333 -k password -m aes-256-cfb本地连接 通过命令行连接或者ss客户端
-sslocal -s x.x.
+                            GO FUZZING安装 go 环境建议在服务器上搭建
+docker pull fuzzitdev/golang:1.12.7-buster
+
+FROM fuzzitdev/golang:1.12.7-buster
+RUN apt-get 
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-09-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-02
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BD%91%E7%BB%9C/" class="post-category">
-                                    网络
+                            <a href="/categories/fuzzing/" class="post-category">
+                                    fuzzing
                                 </a>
                             
                             
@@ -881,8 +700,8 @@ sslocal -s x.x.
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/ssh/">
-                        <span class="chip bg-color">ssh</span>
+                    <a href="/tags/golang-fuzzing/">
+                        <span class="chip bg-color">golang fuzzing</span>
                     </a>
                     
                 </div>
